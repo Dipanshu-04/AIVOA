@@ -1,0 +1,182 @@
+{
+  "users": [
+    {
+      "id": "demo-user-1",
+      "email": "demo.rep@pharma.com",
+      "name": "Jane Doe",
+      "role": "sales_rep"
+    }
+  ],
+  "hcps": [
+    {
+      "id": "hcp-101",
+      "first_name": "Sarah",
+      "last_name": "Smith",
+      "specialty": "Oncology",
+      "email": "ssmith@cityhospital.org",
+      "phone": "555-0101",
+      "location": "City Hospital, Suite 100"
+    },
+    {
+      "id": "hcp-102",
+      "first_name": "Steven",
+      "last_name": "Smith",
+      "specialty": "Cardiology",
+      "email": "steven.smith@heartclinic.org",
+      "phone": "555-0102",
+      "location": "Heart Center"
+    },
+    {
+      "id": "hcp-103",
+      "first_name": "Elena",
+      "last_name": "Rodriguez",
+      "specialty": "Neurology",
+      "email": "erodriguez@neuroinst.org",
+      "phone": "555-0103",
+      "location": "Neurology Institute"
+    },
+    {
+      "id": "hcp-104",
+      "first_name": "Michael",
+      "last_name": "Chen",
+      "specialty": "Endocrinology",
+      "email": "mchen@endocrinecare.com",
+      "phone": "555-0104",
+      "location": "Endocrine Care Clinic"
+    },
+    {
+      "id": "hcp-105",
+      "first_name": "David",
+      "last_name": "Kim",
+      "specialty": "Internal Medicine",
+      "email": "dkim@generalpractice.org",
+      "phone": "555-0105",
+      "location": "Main St Medical"
+    },
+    {
+      "id": "hcp-106",
+      "first_name": "Aisha",
+      "last_name": "Patel",
+      "specialty": "Pediatrics",
+      "email": "apatel@childrenshosp.org",
+      "phone": "555-0106",
+      "location": "Children's Hospital"
+    },
+    {
+      "id": "hcp-107",
+      "first_name": "Robert",
+      "last_name": "Johnson",
+      "specialty": "Oncology",
+      "email": "rjohnson@regionalcancer.org",
+      "phone": "555-0107",
+      "location": "Regional Cancer Center"
+    },
+    {
+      "id": "hcp-108",
+      "first_name": "Emily",
+      "last_name": "Davis",
+      "specialty": "Rheumatology",
+      "email": "edavis@jointhealth.com",
+      "phone": "555-0108",
+      "location": "Joint Health Center"
+    },
+    {
+      "id": "hcp-109",
+      "first_name": "James",
+      "last_name": "Wilson",
+      "specialty": "Cardiology",
+      "email": "jwilson@cardiofirst.org",
+      "phone": "555-0109",
+      "location": "CardioFirst Associates"
+    },
+    {
+      "id": "hcp-110",
+      "first_name": "Laura",
+      "last_name": "Martinez",
+      "specialty": "Psychiatry",
+      "email": "lmartinez@mindwellness.com",
+      "phone": "555-0110",
+      "location": "Mind Wellness Clinic"
+    }
+  ],
+  "materials": [
+    {
+      "id": "mat-01",
+      "name": "OncoBoost Phase III Clinical Trial Results",
+      "description": "PDF detailing the efficacy and safety of OncoBoost in Phase III.",
+      "type": "PDF"
+    },
+    {
+      "id": "mat-02",
+      "name": "CardioGuard Product Overview Brochure",
+      "description": "High-level patient-facing brochure for CardioGuard.",
+      "type": "Brochure"
+    },
+    {
+      "id": "mat-03",
+      "name": "NeuroCalm Dosing Guide",
+      "description": "HCP reference for prescribing NeuroCalm.",
+      "type": "PDF"
+    }
+  ],
+  "samples": [
+    {
+      "id": "sam-01",
+      "name": "CardioGuard 10mg Trial Pack",
+      "description": "14-day supply of CardioGuard.",
+      "lot_number": "LOT-CG-8821",
+      "expiry_date": "2026-12-31"
+    },
+    {
+      "id": "sam-02",
+      "name": "NeuroCalm 5mg Starter Kit",
+      "description": "7-day starter kit for NeuroCalm.",
+      "lot_number": "LOT-NC-9912",
+      "expiry_date": "2026-10-15"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "int-001",
+      "user_id": "demo-user-1",
+      "hcp_id": "hcp-101",
+      "interaction_type": "In-Person Meeting",
+      "interaction_date": "2025-04-18",
+      "interaction_time": "14:00",
+      "attendees": "Nurse Jackie",
+      "topics_discussed": "Discussed OncoBoost Phase III results.",
+      "sentiment": "Positive",
+      "outcomes": "HCP interested in prescribing OncoBoost to eligible patients.",
+      "status": "SAVED"
+    },
+    {
+      "id": "int-002",
+      "user_id": "demo-user-1",
+      "hcp_id": "hcp-102",
+      "interaction_type": "Video Call",
+      "interaction_date": "2025-04-20",
+      "interaction_time": "10:30",
+      "attendees": "",
+      "topics_discussed": "Reviewed CardioGuard efficacy data.",
+      "sentiment": "Neutral",
+      "outcomes": "HCP wants to see more data on side effects.",
+      "status": "SAVED"
+    }
+  ],
+  "follow_ups": [
+    {
+      "id": "fu-001",
+      "interaction_id": "int-001",
+      "description": "Send OncoBoost Phase III PDF.",
+      "due_date": "2025-04-25",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "fu-002",
+      "interaction_id": "int-002",
+      "description": "Follow up with CardioGuard safety profile documentation.",
+      "due_date": "2025-04-27",
+      "status": "PENDING"
+    }
+  ]
+}
