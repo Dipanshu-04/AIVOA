@@ -85,31 +85,20 @@ GROQ_API_KEY=your_groq_api_key_here
 DATABASE_URL=mysql+pymysql://user:password@localhost:3306/aivoa_crm 
 ```
 
-**Frontend (`frontend/.env`):**
-```env
-REACT_APP_API_URL=http://localhost:8000/api
-```
-
 ### Running the Application
 
-**1. Database Seeding:**
-```bash
-cd backend
-# Seeds 10 HCPs, materials, samples, and demo interactions
-python app/seed/seed_data.py
-```
 
-**2. Start Backend:**
+**1. Start Backend:**
 ```bash
 cd backend
-pip install -r requirements.txt
+pip install -r requirements.txt #if dependencies not installed.
 uvicorn app.main:app --reload --port 8000
 ```
 
-**3. Start Frontend:**
+**2. Start Frontend:**
 ```bash
 cd frontend
-npm install
+npm install #if dependencies not installed.
 npm run dev
 ```
 
