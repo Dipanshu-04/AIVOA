@@ -147,19 +147,46 @@ async def tool_execution_node(state: AgentState) -> Dict[str, Any]:
         result = search_hcp.invoke({"name_query": query})
         
     elif tool_name == "edit_interaction":
-        result = edit_interaction.invoke({
-            "interaction_id": draft.get("id", "temp_id"),
-            "hcp_id": draft.get("hcp_id"),
-            "hcp_name": draft.get("hcp_name"),
-            "interaction_type": draft.get("interaction_type"),
-            "interaction_date": draft.get("interaction_date"),
-            "interaction_time": draft.get("interaction_time"),
-            "attendees": draft.get("attendees"),
-            "topics_discussed": draft.get("topics_discussed"),
-            "sentiment": draft.get("sentiment"),
-            "outcomes": draft.get("outcomes"),
-            "status": "SAVED" 
-        })
+        interaction_id = draft.get("id")
+        
+        # If the draft has no id, look up the interaction by HCP name
+        if not interaction_id:
+            current_ext = state.get("current_extraction", {})
+            lookup_name = current_ext.get("hcp_name") or draft.get("hcp_name")
+            if lookup_name:
+                from app.db.session import SessionLocal
+                from app.models.interaction import Interaction
+                db = SessionLocal()
+                try:
+                    match = (
+                        db.query(Interaction)
+                        .filter(
+                            Interaction.user_id == state.get("user_id", "demo-user-1"),
+                            Interaction.hcp_name.ilike(f"%{lookup_name}%"),
+                        )
+                        .order_by(Interaction.created_at.desc())
+                        .first()
+                    )
+                    if match:
+                        interaction_id = match.id
+                finally:
+                    db.close()
+        
+        if not interaction_id:
+            result = {"status": "error", "message": "Could not find the interaction to edit. Please specify the HCP name."}
+        else:
+            result = edit_interaction.invoke({
+                "interaction_id": interaction_id,
+                "hcp_id": draft.get("hcp_id"),
+                "hcp_name": draft.get("hcp_name"),
+                "interaction_type": draft.get("interaction_type"),
+                "interaction_date": draft.get("interaction_date"),
+                "interaction_time": draft.get("interaction_time"),
+                "attendees": draft.get("attendees"),
+                "topics_discussed": draft.get("topics_discussed"),
+                "sentiment": draft.get("sentiment"),
+                "outcomes": draft.get("outcomes"),
+            })
         
     elif tool_name == "recall_interactions":
         current_ext = state.get("current_extraction", {})
